@@ -4,22 +4,48 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>LiangJun&#39;s blog</title>
+    <title>基于深度学习的协同过滤电影推荐系统 | LiangJun&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="LiangJunChan">
     
 
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LiangJun's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="说在前面
+这是大学毕业设计的题目，原本只是做一个混合协同算法的推荐系统，但是无奈坑越挖越多，导师要求越来越高o(╯□╰)o，最后在原来的基础上重新用深度学习其中的autoencoder模型训练从movielens中随手下载的数据集来实试验，比较两种算法的推荐结果优劣。相关资料网络比较零散，中文文献也不是很多，最后会附上autoencoder原英文文献，有兴趣的童鞋可以看看。
+设计思路整个系统分为前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于深度学习的协同过滤电影推荐系统">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/20170109/index.html">
 <meta property="og:site_name" content="LiangJun's blog">
-<meta property="og:description">
+<meta property="og:description" content="说在前面
+这是大学毕业设计的题目，原本只是做一个混合协同算法的推荐系统，但是无奈坑越挖越多，导师要求越来越高o(╯□╰)o，最后在原来的基础上重新用深度学习其中的autoencoder模型训练从movielens中随手下载的数据集来实试验，比较两种算法的推荐结果优劣。相关资料网络比较零散，中文文献也不是很多，最后会附上autoencoder原英文文献，有兴趣的童鞋可以看看。
+设计思路整个系统分为前">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/13.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/14.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/25.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/19.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/26.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/mr/27.png">
+<meta property="og:updated_time" content="2017-08-12T10:01:28.309Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LiangJun's blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="基于深度学习的协同过滤电影推荐系统">
+<meta name="twitter:description" content="说在前面
+这是大学毕业设计的题目，原本只是做一个混合协同算法的推荐系统，但是无奈坑越挖越多，导师要求越来越高o(╯□╰)o，最后在原来的基础上重新用深度学习其中的autoencoder模型训练从movielens中随手下载的数据集来实试验，比较两种算法的推荐结果优劣。相关资料网络比较零散，中文文献也不是很多，最后会附上autoencoder原英文文献，有兴趣的童鞋可以看看。
+设计思路整个系统分为前">
 
     
     <link rel="alternative" href="/atom.xml" title="LiangJun&#39;s blog" type="application/atom+xml">
@@ -71,12 +97,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2017/07/31/20170109/" title="基于深度学习的协同过滤电影推荐系统" itemprop="url">基于深度学习的协同过滤电影推荐系统</a>
@@ -90,9 +114,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p><strong>说在前面</strong></p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计思路"><span class="toc-number">1.</span> <span class="toc-text">设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关键技术和算法简要介绍"><span class="toc-number">1.1.</span> <span class="toc-text">关键技术和算法简要介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#协同过滤"><span class="toc-number">1.1.1.</span> <span class="toc-text">协同过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深度学习"><span class="toc-number">1.1.2.</span> <span class="toc-text">深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）Autoencoder学习模型"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">（2）Autoencoder学习模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）反向传播算法"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">（3）反向传播算法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系统实现简介"><span class="toc-number">2.</span> <span class="toc-text">系统实现简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于用户和物品聚类的协同过滤作出推荐"><span class="toc-number">2.1.</span> <span class="toc-text">基于用户和物品聚类的协同过滤作出推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于深度学习神经网络的作出推荐"><span class="toc-number">2.2.</span> <span class="toc-text">基于深度学习神经网络的作出推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Identity函数，Adam优化算法时："><span class="toc-number">2.2.1.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Identity函数，Adam优化算法时：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Identity函数，RMSProp优化算法时："><span class="toc-number">2.2.2.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Identity函数，RMSProp优化算法时：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Tanh函数，Adam优化算法时："><span class="toc-number">2.2.3.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Tanh函数，Adam优化算法时：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+		
+		</div>
+		
+		<p><strong>说在前面</strong></p>
 <p>这是大学毕业设计的题目，原本只是做一个混合协同算法的推荐系统，但是无奈坑越挖越多，导师要求越来越高o(╯□╰)o，最后在原来的基础上重新用深度学习其中的autoencoder模型训练从movielens中随手下载的数据集来实试验，比较两种算法的推荐结果优劣。相关资料网络比较零散，中文文献也不是很多，最后会附上autoencoder原英文文献，有兴趣的童鞋可以看看。</p>
 <h1 id="设计思路"><strong>设计思路</strong></h1><p>整个系统分为前端以及后端两部分。<br>1.前端主要使用的是基于PythonWeb中的Flask框架，用html+css来开发，页面最终用于展示推荐结果；<br>2.后端通过接受前端推荐发送过来的数据用Python进行处理，利用autoencoder模型通过大数据训练来预测用户对电影的missing评分值，同时利用输入与输出的损失来优化模型，最后进行推荐；<br>3.重新用基于皮尔逊算法以及余弦相似度算法预测用户对未曾看过的电影的评分来进行混合推荐；<br>4.将2,3中的结果进行对比分析；</p>
 <h2 id="关键技术和算法简要介绍">关键技术和算法简要介绍</h2><h3 id="协同过滤">协同过滤</h3><p>协作型过滤算法是对海量的其他用户进行检索，对他们进行分类，并从中寻找与用户感兴趣物品接近的一小部分人，对该用户没有接触过的内容并且是最接近的这一小群人所偏爱的其他内容进行研究，将它们组合起来构造出一个经过排名的推荐列表。协同过滤分为三个步骤：<br>①计算各用户（物品）与目标用户（物品）的相似度。<br>②最临近查询。根据各用户（物品）与目标用户（物品）之间的相似度，在两者涉及到的物品中确定该目标用户（物品）的最近邻居集合。<br>③预测和推荐，将最近邻居用户（物品）的评分的加权值作为目标用户（物品）的评分值。</p>
@@ -136,14 +167,9 @@
 <h1 id="总结"><strong>总结</strong></h1><p>经过以上实验以及对比可以发现，基于用户和物品聚类的协同过滤推荐寄过以及基于深度学习神经网络推荐结果均有一定的可靠性，且在基于深度学习神经网络的推荐中，当编码激活函数，解码激活函数分别为Sigmoid，Identity，优化算法为Adam或者是RMSProp时推荐结果最好，而使用其他优化算法或者激活函数时由于使其学习率或者最后RMSE值过高，预测结果均不理想。</p>
 <p>基于深度学习的协同过滤个性化推荐系统满足了现实当中人们根据不同的个人需要有不同推荐信息的需求，弥补了传统电商服务平台和网站上所缺乏的针对性推荐这一不足之处。现今有越来越多的企业也开始发展自己平台的个性化推荐，然而传统的基于协同过滤，基于内容推荐等均具有一定的局限性，比如数据的稀疏性带来的推荐结果不准确问题，难以挖掘用户的隐藏兴趣进行推荐。而基于深度学习的协同过滤个性化推荐系统则能够很好地解决以上难题，而且应用到各个电商平台，电影推荐，音乐推荐等领域，准确为用户推荐其可能感兴趣的结果，这能够同时为企业和用户带来利益。<br>整个系统的设计以电影推荐为例，用户从web端输入对部分电影的主管评分制，将输入的信息作为一个目标用户加入到大数据集之中，而深度学习使用了Autoencoder模型来训练大数据集之中用户的信息数据，在经过多次训练之后当训练模型的损失值（Cost）和预测值的均方根误差（RMSE）达到最为理想时候将目标用户的评分信息输入进系统当中便能够较为准确地预测到目标用户的missing值，即该用户对其他未看过未评分电影的预测评分制，通过对这些missins值的排序从高到低返回作为推荐结果。</p>
 <p>附录一篇autoencoders的Paper:<a href="http://users.cecs.anu.edu.au/~ssanner/Papers/www15.pdf" target="_blank" rel="external">http://users.cecs.anu.edu.au/~ssanner/Papers/www15.pdf</a><br>最后，源码很杂乱，需要看的将就看吧：<a href="https://github.com/LiangJunChan/movieRecommend" target="_blank" rel="external">https://github.com/LiangJunChan/movieRecommend</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -156,347 +182,43 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2017/07/31/20170109/" data-title="基于深度学习的协同过滤电影推荐系统 | LiangJun&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/01/30/android_lecture/" title="基于Android的讲座发布报名签到APP" itemprop="url">基于Android的讲座发布报名签到APP</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="LiangJunChan" target="_blank" itemprop="author">LiangJunChan</a>
-		
-  <p class="article-time">
-    <time datetime="2016-01-30T04:50:40.000Z" itemprop="datePublished"> 發表於 2016-01-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>前言</strong>——Android与java</p>
-<p>Android设计出来的时候就是要在不同厂商的不同硬件平台上运行的。不同硬件平台意味着不同的CPU不同的指令集。在系统层面为了保持效率以及系统开发一般都用c/c++开发在应用层面就必须面对跨平台的支持性那么哪种语言能做到一次编译，到处运行呢？最成熟、可靠且流行的方案应该只有java了</p>
-<p>这个学期我们课程上有java的设计要求，因此本人就和几个小伙伴们决定基于Android平台开发一款关于讲座发布报名签到的移动应用，符合java基础，并且也可以继续我们的Android之路（已学习Android一段时间）.设计采用了C/S设计模式，客户端（Client）主要采用Android语言开发App，服务器端（Server）结合PHP和MySQL进行开发设计</p>
-<h1 id="设计思路"><strong>设计思路</strong></h1><ol>
-<li>应用开始进入Homefragment，通过向服务post请求，向数据库请求数据。数据库把存储在数据库里的各子项的Id、Title、Cont、Time、Place的以Json格式数据返回，通过解析后显示在LIstView中。</li>
-<li>另外一个就是发布页面PublishAcitivity，通过监听发布按钮，把lecture的Id、Title、Cont、Time、Place通过服务器发送到数据库中。</li>
-<li>确认发布后，会跳转至MessageActivity显示发布成功或不成功，然后监听按键，返回HomeFragment，HomeFragment会更新信息。</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/UML.png" alt="UML图"></p>
-<h2 id="程序设计">程序设计</h2><h3 id="多线程">多线程</h3><h4 id="(1)线程的基本的用法">(1)线程的基本的用法</h4><p>Android多线程的基本三种创建方法：</p>
-<p>1.定义一个线程只需要新建一个类继承自Thread，然后重写父类的方法run()的方法，并在里面编写耗时逻辑。<br><code>1　　class MyThread extends Thread {</code><br><code>2　　　　@Override</code><br><code>3　　　　public void run() {</code><br><code>4　　　　// 处理具体的逻辑</code><br><code>5　　　　}</code><br><code>6　　}</code><br><code>7　　new MyThread().start();</code></p>
-<p>2.new 出 MyThread 的实例，然后调用它的 start()方法，这样 run()方法中的代码就会在子线程当中运行了</p>
-<p><code>1　　class MyThread implements Runnable {</code><br><code>2　　　　@Override</code><br><code>3　　　　public void run() {</code><br><code>4　　　　// 处理具体的逻辑</code><br><code>5　　　　}</code><br><code>6　　}</code><br><code>7　　MyThread myThread = new MyThread();</code><br><code>8　　new Thread(myThread).start();</code></p>
-<p>3.也可以使用匿名类的方式，这种写法更为常见</p>
-<p><code>1　　new Thread(new Runnable() {</code><br><code>2　　　　@Override</code><br><code>3　　　　public void run() {</code><br><code>4　　　　// 处理具体的逻辑</code><br><code>5　　}</code><br><code>6　　}).start();</code></p>
-<h4 id="(2)与java的不同点">(2)与java的不同点</h4><p>Android是不允许在子线程中进行UI操作的.为了能在子线程中对UI进行操作，可以通过异步消息处理。过程如下：</p>
-<p>首先需要在主线程当中创建一个 Handler 对象，并重写handleMessage()方法。然后当子线程中需要进行 UI 操作时，就创建一个 Message 对象，并通过 Handler 将这条消息发送出去。之后这条消息会被添加到 MessageQueue 的队列中等待被处理，而 Looper 则会一直尝试从 MessageQueue 中取出待处理消息，最后分发回 Handler的 handleMessage()方法中。由于 Handler是在主线程中创建的，所以此时 handleMessage()方法中的代码也会在主线程中运行，于是我们在这里就可以安心地进行 UI 操作了。</p>
-<p><strong>信息发送</strong></p>
-<p><code>1　　Message message =handler.obtainMessage();</code><br><code>2　　message.what = REBUILD_TEXT;</code><br><code>3　　handler.sendMessage(message);     //发送信息</code></p>
-<p><strong>信息接收处理逻辑</strong></p>
-<p><code>1　　private Handler handler = new Handler(){</code><br><code>2　　　　　　public void handleMessage(Message msg){</code><br><code>3　　　　　　　　　　switch (msg.what){</code><br><code>4　　　　　　　　　　case REBUILD_TEXT:{</code><br><code>5　　　　　　　　　　adapter.notifyDataSetChanged();  //通知适配器刷新</code><br><code>6　　　　　　　　　　adapter = new MyAdapter();</code><br><code>7　　　　　　　　　　lectureLv.setAdapter(adapter);   //重新载入适配器数据</code><br><code>8　　　　　　　　　　break;</code><br><code>9　　　　　　　　}</code><br><code>10　　　　　　　　default:</code><br><code>11　　　　　　　　　　break;</code><br><code>12　　　　　　　　}</code><br><code>13　　　　　　}</code><br><code>14　　};</code></p>
-<p>通过Handler的对象，接收到了REBUILD_TEXT ， 就会在主线程中执行操作，取代了在子线程修改UI.</p>
-<h3 id="Android与网络访问">Android与网络访问</h3><p>HttpClient 是一个接口，因此无法创建它的实例，通常情况下都会创建一个 DefaultHttpClient 的实例</p>
-<p><code>HttpClient httpClient = new DefaultHttpClient();</code></p>
-<p>接下来如果想要发起一条 GET 请求，就可以创建一个 HttpGet 对象，并传入目标的网络地址，然后调用 HttpClient 的 execute()方法即可</p>
-<p><code>1　　HttpGet httpGet = new HttpGet(url);</code><br><code>2　　httpClient.execute(httpGet);</code></p>
-<p>如果是发起一条 POST 请求会比 GET 稍微复杂一点，我们需要创建一个 HttpPost 对象，并传入目标的网络地址，如下所示：</p>
-<p><code>HttpPost httpPost = new HttpPost(url);</code></p>
-<p>然后通过一个 NameValuePair 集合来存放待提交的参数，并将这个参数集合传入到一个UrlEncodedFormEntity中，然后调用 HttpPost的 setEntity()方法将构建好的 UrlEncodedFormEntity传入</p>
-<p><code>1　　List&lt;NameValuePair&gt; params = new ArrayList&lt;NameValuePair&gt;();</code><br><code>2　　params.add(new BasicNameValuePair(key, value));</code><br><code>3　　UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, &quot;utf-8&quot;);</code><br><code>4　　httpPost.setEntity(entity);</code><br><code>5　　httpClient.execute(httpPost);</code></p>
-<p>执行 execute()方法之后会返回一个 HttpResponse对象， 服务器所返回的所有信息就会包含在这里面。通常情况下我们都会先取出服务器返回的状态码，如果等于 200就说明请求和响应都成功了，如下所示：</p>
-<p><code>1　　if (httpResponse.getStatusLine().getStatusCode() == 200) {</code><br><code>2　　// 请求和响应都成功了</code><br><code>3　　//返回逻辑处理</code><br><code>4　　}</code></p>
-<p>接下来在这个 if 判断的内部取出服务返回的具体内容，可以调用 getEntity()方法获取到一个 HttpEntity 实例， 然后再EntityUtils.toString()这个静态方法将 HttpEntity 转换成字符串即可：</p>
-<p><code>1　　HttpEntity entity = httpResponse.getEntity();</code><br><code>2　　String response = EntityUtils.toString(entity);</code></p>
-<p>我们的设计使用的方法大概就是如此，具体代码可自行下载github上源代码查看</p>
-<h3 id="服务器部分">服务器部分</h3><h4 id="接口页面">接口页面</h4><p>服务器接口部分采用了PHP语言设计相关接口，此处不详细介绍。</p>
-<h4 id="数据库">数据库</h4><p>采用MySQL数据库对数据进行存储和分类.由于我们的设计采用了本地服务器和数据库，因此需要测试App需要在XAMPP环境下，开启Apache服务器，将相关接口文件置于htdos文件夹内，本应用方可正常运作，另数据库需参数保持一致。</p>
-<p>设计结构：数据库lectureapp<br>　　　　　　　　　　|—表lecture<br>　　　　　　　　　　　　　|—id<br>　　　　　　　　　　　　　|—Title<br>　　　　　　　　　　　　　|—LectureCont<br>　　　　　　　　　　　　　|—LectureTime<br>　　　　　　　　　　　　　|—LecturePlace<br>　　　　　　　　　　　　　|—Others<br>　　　　　　　　　　　　　|—SignUpNum<br>　　　　　　　　　　　　　|—CheckInNum</p>
-<p>权限：username: javamanager<br>      password: admin123</p>
-<h1 id="设计结果"><strong>设计结果</strong></h1><ol>
-<li>预期结果<br>（1）    展示数据库中存储的所有讲座信息<br>（2）    发布新的讲座信息<br>（3）    可报名与签到<br>（4）    数据库可查看报名人数与签到人数</li>
-</ol>
-<p>2.实际测试</p>
-<p><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/1.png" alt=""><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/2.png" alt=""><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/3.png" alt="当按下发布按钮后"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/4.png" alt="填写讲座信息"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/5.png" alt="发布前数据库信息"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/6.png" alt="确认发布后"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/7.png" alt="发布成功后数据库信息"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/8.png" alt="返回主页"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/9.png" alt="如果要报名或签到，在讲座详细信息的页面"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/10.png" alt="报名前数据库"><br><img src="https://raw.githubusercontent.com/LiangJunChan/MarkdownPhoto/master/11.png" alt="我要报名后，数据库的变化"></p>
-<p><strong>总结</strong></p>
-<p>本次设计由我、梁仲舒、李伟燊3个基佬合作完成.由于技术的不成熟，还有很多地方没有达到比较好的地步。比如：在应用开始阶段获取数据库子项信息列表采用了把数据库所有数据遍历一次后全部获取过来再一次性展示，在实际应用中如果数据库中存储的数据数量较大的时候，很容易造成应用的负荷过重，可能导致应用崩溃造成各种问题；在进行报名后，没有相关操作提醒用户已经报过名，签到亦是如此，会导致别人恶意刷签到人数和报名人数；没有添加讲座信息删除功能等等。相关各种问题将会在日后有时间进行修补。</p>
-<p>附上源码地址:<a href="https://github.com/LiangJunChan/LectureApp.git" target="_blank" rel="external">https://github.com/LiangJunChan/LectureApp.git</a></p>
-<p>2016-01-30</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/learn/">learn</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/01/30/android_lecture/"  title="基于Android的讲座发布报名签到APP">
+ <strong>下一篇：</strong><br/> 
+ <span>基于Android的讲座发布报名签到APP
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/10/05/网易实习over/" title="网易实习个人思考" itemprop="url">网易实习个人思考</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="LiangJunChan" target="_blank" itemprop="author">LiangJunChan</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-05T04:59:50.000Z" itemprop="datePublished"> 發表於 2015-10-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>7月20日至9月1日，我去了广州网易互动娱乐事业群虚拟世界运营管理实习</p>
-<p>有同学问，大二暑假就要开始实习？太早了吧？</p>
-<p><strong>早吗？</strong></p>
-<p>不早.</p>
-<p>大三，已经半只脚踏入社会（不读研的话），如果大三再考虑实习的事情，我个人觉得是有点晚的.况且，于实习生而言，非技术岗位，在实习期间更多的是感受企业文化以及学习社会沟通和处事的能力，一般师兄们把这称为”打杂”，然而就算是打杂？这也是一次很了不起的起步（我觉得吧）提前接触企业，不是一件很好的事情吗？于是乎，大二的我便跟着师兄们的脚步，在大三找实习的时候我也开始投简历，最后得到了这次机会。</p>
-<p> <strong>So what do I learn from NetEase?</strong></p>
-<p> 暑假这次实习对我而言，感受最深的确实就是网易的氛围，其次就是我所学习到的，如何与客户沟通，如何处理基础业务</p>
-<p>我所在的是综合游戏组，负责的是大话西游3、英雄三国等游戏的运营管理。其中最常见的工作就是作为游戏GM解决玩家遇到的问题或者是在线与玩家行进沟通，另外就是测试游戏内容，以及学习论坛管理和精灵等。</p>
-<p>不得不说，我的脾气和沟通能力确实大大提高了，游戏当中玩家会遇到各种各样的问题，而对我的考验想想最头痛的貌似就是需要同时在线解答3个左的玩家的疑难，而且一旦回复慢了，玩家会有情绪，会有脾气，而最直接的影响就是玩家走后可能直接给”差评”，好评率在90%以下的话当天还要检讨写总结给组长，所以每天下班后我都基本留多2个小时再公司写总结和反思（囧），但是不得不说，这确实有用，因为后来即将离开时，我的评价好评率基本都有92%左右，基本达到了正式员工的标准，当然不够的就是业务量比不上正式员工。</p>
-<p>简而言之，我学到的有：</p>
-<p><strong>从个人角度</strong></p>
-<p>1.思考问题的方式：对方要的是什么。接到一个问题，不是光从解决这个问题入手，而是思考对方要的是什么，高效，节约时间，发现需求，目光犀利。</p>
-<p>2.个人提升问题：聪哥干了4年，升到质检培训师；叶子干了7年，组长；艺姐干了10年，还是基层；主管奖金5位数，普通底层员工5K；python；打击组；有的可以很闲，有的可以很忙（小贤16小时工作），在保持自己基本工作的同时，很欢迎学习；有内部培训班；</p>
-<p>3.企业文化，氛围.公司有健身房，非常欢迎员工下班有空前往，并且还有教练为个人制定健身计划。小组经常有活动，如傍晚集体跑步等。另外还有各种团体活动，足球赛，篮球赛，晚会等等。</p>
-<p><strong>其他</strong></p>
-<p>1.双向选择。公司有人走，有人来。（领哥，其他实习生）<br>起点低，进来都是要重新学（技术除外）</p>
-<p>2.同一组人，不要坑队友。最常见的就是与客户交流时，为了稳住客户的情绪降低差评率而做一些”保证”，无论何时，在任何一个岗位，我想都是需要紧紧记住自己的身份，并以这个身份谨慎地工作。</p>
-<p>3.想清楚自己要的是什么。（我的目的很明确，体验网易企业文化，学到尽可能多的东西，所以工作时候都经常忙里偷闲，学习python等我暂时用不到的技能，因为python是更高的职位技能要求，看组长，其他人，主管在干什么）只要肯努力，晋升不是太难的，你做的每一件小事你的领导都看在眼里，而领导们都是一群很好很会欣赏他人的人）（叶子师傅只稍微训过我一次，主管 一次都没说过我，师兄们基本大家人都很好，很乐意教人，而且平时也很逗，师傅在我临走前说的话，回来吃宵夜，大家聚聚等等）</p>
-<p>以上</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/thought/">thought</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
 
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/10/01/new/" title="为什么我要有这个博客" itemprop="url">为什么我要有这个博客</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="LiangJunChan" target="_blank" itemprop="author">LiangJunChan</a>
-		
-  <p class="article-time">
-    <time datetime="2015-10-01T08:59:50.000Z" itemprop="datePublished"> 發表於 2015-10-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>为什么我要写博客？</p>
-<p><strong>一个选择</strong></p>
-<p>在这个大家都专注于自己的时代，写博客貌似有一点out？我知道判断一件事情值不值得去做有一个方法：在一张白纸的左边写不值得做的原因，然后在右边写值得做的原因，写完一比较，一权衡，自然能够得出结果，于是乎——</p>
-<p><strong>博客的内容</strong></p>
-<p>1.不是流水账，不是个人闹骚，不是抱怨</p>
-<p>2.有目的地写，追求质量</p>
-<p>3.不夸大自己，不装逼</p>
-<p>4.记录自己的思考，学习过程</p>
-<p>5.分享自己的感悟、所得、经验</p>
-<p><strong>重新认识自己</strong></p>
-<p>我不知道自己多久没有和自己内心对话了，因此在这里我可以尝试回答一些和自己交流的问题：</p>
-<p>我是谁？</p>
-<p>我想得到什么？</p>
-<p>我该如何做到？</p>
-<p><strong>提供持续学习的动力</strong></p>
-<p>对于想走技术路线的人来说，难的不是技术本身，而或许是总结能力。如在学习C、java等语言的时候，往往会闷声苦干、却没有总结思考的能力，而我觉得，更难的是后者，而且掌握了总结能力，对个人技术技能树的开发有莫大的帮助。</p>
-<p><strong>提高将事情讲清楚的能力</strong></p>
-<p>沟通能力无论怎样都是个人需要掌握的技能，而表达更是如此，我们往往会看到，一个人自身非常厉害，但是一让他传授给其他人，却有很多人无法表达清楚，，我想做的便是，一边提升自己，一边锻炼自己这方面的能力。</p>
-<p><strong>最后</strong></p>
-<p>让我做一件属于我自己的事情吧!</p>
-<p>Begin!</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/learn/">learn</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/09/27/9-27/" title="9.27" itemprop="url">9.27</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="LiangJunChan" target="_blank" itemprop="author">LiangJunChan</a>
-		
-  <p class="article-time">
-    <time datetime="2015-09-27T11:24:45.000Z" itemprop="datePublished"> 發表於 2015-09-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <pre><code>小时候，中秋节是圆的，圆圆的月亮，圆圆的月饼；
-
-稍大时，中秋节是圆的，圆圆的笑脸，圆圆的祝福;
-
-现在，中秋节是圆的，却只是因为记忆中的中秋是圆的；
-
-记忆中的中秋，家人总是会搬个凳子在院坝头，摆上月饼、花生、桔子等，点上香腊钱纸敬菩萨。
-
-记忆中的中秋，自己会点个小灯笼，跟小时候的玩伴在村头绕来绕去；会追着大个的月亮跑，不小心指了一下月亮，会跑去问妈妈，是不是真的要被割耳朵。
-
-一早去了本部后门，听一个大神介绍他的经验，听星哥说这些年他的项目，看着他给我看的现在正在线上的众多项目，代码.看着未来自己也许都要学习的to learn list.深深地感觉到压力.
-
-晚上，看到满天的祝福信息，看着热闹的校园，看到圆圆的月，原来，今儿还是中秋.
-
-年年岁岁月相似，岁岁年年心不同~说得就是这个吧.
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/随笔/">随笔</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
-  </nav>
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计思路"><span class="toc-number">1.</span> <span class="toc-text">设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关键技术和算法简要介绍"><span class="toc-number">1.1.</span> <span class="toc-text">关键技术和算法简要介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#协同过滤"><span class="toc-number">1.1.1.</span> <span class="toc-text">协同过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深度学习"><span class="toc-number">1.1.2.</span> <span class="toc-text">深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（2）Autoencoder学习模型"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">（2）Autoencoder学习模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3）反向传播算法"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">（3）反向传播算法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系统实现简介"><span class="toc-number">2.</span> <span class="toc-text">系统实现简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于用户和物品聚类的协同过滤作出推荐"><span class="toc-number">2.1.</span> <span class="toc-text">基于用户和物品聚类的协同过滤作出推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于深度学习神经网络的作出推荐"><span class="toc-number">2.2.</span> <span class="toc-text">基于深度学习神经网络的作出推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Identity函数，Adam优化算法时："><span class="toc-number">2.2.1.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Identity函数，Adam优化算法时：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Identity函数，RMSProp优化算法时："><span class="toc-number">2.2.2.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Identity函数，RMSProp优化算法时：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当g(·)为Sigmoid函数，f(·)为Tanh函数，Adam优化算法时："><span class="toc-number">2.2.3.</span> <span class="toc-text">当g(·)为Sigmoid函数，f(·)为Tanh函数，Adam优化算法时：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
@@ -630,12 +352,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -706,4 +505,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
